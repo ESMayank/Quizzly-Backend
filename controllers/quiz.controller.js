@@ -1,11 +1,5 @@
 const generateQuiz = require("./services/gemini.integration")
-const Redis = require("ioredis");
-
-const redis = new Redis(process.env.REDIS_URL);
-
-
-redis.on("connect", () => console.log("🔗 Connected to Redis"));
-redis.on("error", (err) => console.log("❌ Redis Error:", err));
+const redis = require("./services/redis.services");
  async function quizGenerate(req, res){
   try {
     const { topic, count } = req.body;
